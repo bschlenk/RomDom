@@ -3,6 +3,8 @@ RomDom
 
 A rom downloader.
 
+Written entirely in python. Soon will have a gui implemented using pyside.
+
 Disclaimer
 ==========
 
