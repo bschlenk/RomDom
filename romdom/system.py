@@ -9,6 +9,9 @@ import re
 from romdom import util
 from romdom.rom import Rom
 
+import logging
+logger = logging.getLogger(__name__)
+
 class SystemError(Exception):
 	pass
 
@@ -19,6 +22,7 @@ class System(object):
 	def __init__(self, system, url):
 		self.system_name = system
 		self.url = url
+                logger.debug('initialized System object %s', repr(self))
 		
 	def __str__(self):
 		return self.system_name
