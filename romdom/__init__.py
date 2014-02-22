@@ -2,7 +2,7 @@ import re
 import urlparse
 from romdom import util
 from romdom import urls
-from romdom.system import System
+#from romdom.system import System
 
 def get_system_list():
 	html = util.get_html(urls.COOLROM_ROMS)

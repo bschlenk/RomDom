@@ -75,7 +75,13 @@ def main(args):
     
 
 def setup_logging(args):
-    logging.basicConfig(format='%(asctime)s %(filename)20s:%(lineno)-4d - %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=logging.DEBUG)
+    #import logging.config
+    #logging.config.fileConfig('logging.conf')
+    logging.basicConfig(
+            format='%(asctime)s %(filename)15s:%(lineno)-4d %(levelname)8s: %(message)s',
+            datefmt='%Y-%m-%d %H:%M:%S',
+            level=logging.DEBUG
+    )
 
 
 if __name__ == "__main__":
