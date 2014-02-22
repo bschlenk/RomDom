@@ -133,3 +133,29 @@ class RomNation(BaseSite):
 
     def _get_letters(self):
         return ['0'] + list(string.ascii_uppercase)
+
+
+class EmuParadise(BaseSite):
+    _base_url = "http://emuparadise.me"
+    _system_url = "/roms-isos-games.php"
+    _rom_page_url = "/{system}/Games-Starting-With-{page}/{system-id}"
+
+
+    def _get_letters(self):
+        return ["Numbers"] + string.ascii_uppercase
+
+
+    def _system_matcher(self, html):
+        system_regex = r'<a\s*style="font-size:\s*12px;"\s*href="/(?P<url>[^/]*)/(?P<id>\d*)"\s*>(?P<name>[^<]*)</a>'
+        matcher = re.compile(system_regex, re.MULTILINE | re.IGNORECASE)
+        matches = [(m.groupdict()['name'], m.groupdict()['url'], m.groupdict()['id']) for m in matcher.finditer(html)]
+        name_url = dict((a[0], a[1]) for a in matches)
+        name_id = dict((a[0], a[2]) for a in matches)
+
+        # this is a hack, for some reason the n64 link is different
+        name_url['Nintendo 64'] = 'Nintendo_64_ROMs'
+        name_id['Nintendo 64'] = '9'
+
+        self.system_id_map = name_id
+        
+        return name_url
