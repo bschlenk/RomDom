@@ -36,7 +36,7 @@ class BaseSystem(object):
         
     def get_page_urls(self):
         """Get a list of urls that roms for this system can be found at"""
-        return map(self.get_page_url, System.pages)
+        return map(self.get_page_url, BaseSystem.pages)
         
     @util.cacheable
     def get_rom_list(self, page):

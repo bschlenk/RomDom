@@ -17,7 +17,6 @@ import argparse
 import re
 
 # RomDom Library imports
-from romdom.system import System
 from romdom import urls
 from romdom import util
 from romdom import get_system_list
