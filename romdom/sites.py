@@ -9,6 +9,7 @@ import requests
 import urlparse
 from romdom import util
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -100,7 +101,6 @@ class DopeRoms(BaseSite):
     _rom_page_url = "/roms/{system}/{letter}"
     _system_regex = r'<a\s*href="/roms/(?P<url>[^/.]*).html">(?P<name>[^<]*)</a>'
 
-
     def _get_letters(self):
         return ["0-9"] + list(string.ascii_uppercase)
 
@@ -109,7 +109,6 @@ class RomWorld(BaseSite):
     _base_url = "http://www.rom-world.com"
     _rom_page_url = "/dl.php?name={system}&letter={letter}"
     _system_regex = r'<a\s*href="/dl\.php\?name=(?P<url>[^"]*)">(?P<name>[^<]*)</a>'
-
 
     def _get_letters(self):
         return ["0-9"] + list(string.ascii_uppercase)
@@ -130,7 +129,6 @@ class RomNation(BaseSite):
     _rom_page_url = "/srv/roms/{system}/{letter}.html"
     _system_regex = r'<a\s*href="/srv/roms/(?P<url>[^.]*)\.html"\s*>(?P<name>.*?) Roms</a>'
 
-
     def _get_letters(self):
         return ['0'] + list(string.ascii_uppercase)
 
@@ -140,10 +138,8 @@ class EmuParadise(BaseSite):
     _system_url = "/roms-isos-games.php"
     _rom_page_url = "/{system}/Games-Starting-With-{page}/{system-id}"
 
-
     def _get_letters(self):
         return ["Numbers"] + string.ascii_uppercase
-
 
     def _system_matcher(self, html):
         system_regex = r'<a\s*style="font-size:\s*12px;"\s*href="/(?P<url>[^/]*)/(?P<id>\d*)"\s*>(?P<name>[^<]*)</a>'

@@ -5,10 +5,12 @@ RomDom utility functions
 import urllib2
 import functools
 
+
 def get_html(site):
 	"""Returns the HTML of the given url"""
 	req = urllib2.urlopen(site)
 	return req.read()
+
 	
 class Cacheable:
 	"""My original attempt at a cacheing wrapper. Doesn't work on member functions"""
@@ -24,6 +26,7 @@ class Cacheable:
 			tmp = self.f(*args, **kwargs)
 			self.mem[key] = tmp
 			return tmp
+
 		
 def cacheable(func):
 	"""Cache the return value of func based on the input arguments"""
